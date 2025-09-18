@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Pacientes</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Tu CSS -->
+  <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body class="body">
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="index.html">Centro Médico</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="listar-medicos.html">Médicos</a></li>
+            <li class="nav-item"><a class="nav-link active" href="listar-pacientes.html">Pacientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="listar-citas.html">Citas</a></li>
+            <li class="nav-item"><a class="nav-link" href="listar-historial.html">Historial</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO -->
+  <div class="container my-5">
+    <h2>Listado de Pacientes</h2>
+
+    <!-- Botón para ir al formulario -->
+    <a class="btn btn-primary mb-3" href="formulario-paciente.html">Agregar Nuevo Paciente</a>
+
+    <!-- Tabla -->
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Sexo</th>
+          <th>DNI</th>
+          <th>Correo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Datos de ejemplo -->
+        <tr>
+          <td>1</td>
+          <td>María</td>
+          <td>López</td>
+          <td>1990-05-12</td>
+          <td>F</td>
+          <td>12345678</td>
+          <td>maria@example.com</td>
+          <td>
+            <a class="btn btn-warning btn-sm" href="formulario-paciente.html">Editar</a>
+            <a class="btn btn-danger btn-sm" href="#" onclick="return confirm('¿Estás seguro de eliminar este paciente?')">Eliminar</a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Carlos</td>
+          <td>Pérez</td>
+          <td>1985-08-20</td>
+          <td>M</td>
+          <td>87654321</td>
+          <td>carlos@example.com</td>
+          <td>
+            <a class="btn btn-warning btn-sm" href="formulario-paciente.html">Editar</a>
+            <a class="btn btn-danger btn-sm" href="#" onclick="return confirm('¿Estás seguro de eliminar este paciente?')">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white text-center py-3 mt-5">
+    <p class="mb-0">© 2025 Centro Médico - Todos

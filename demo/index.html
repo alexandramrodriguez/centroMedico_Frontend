@@ -10,18 +10,17 @@
 <body class="body">
   <div class="container-fluid w-75 mt-5">
     <div class="row align-items-stretch bg-light bg-gradient rounded login">
-      
-      <!-- Banner lateral -->
       <section class="col col-md-5 col-lg-6 d-none d-md-block rounded-start login__banner"
                style="background-image: url('./img/login-banner.jpg'); background-size: cover;">
       </section>
 
-      <!-- Formulario -->
       <div class="col col-lg-6 py-5">
         <h2 class="fw-bold text-center my-4">Bienvenido</h2>
-        <form class="row justify-content-center login__form">
+        
+        <!-- Formulario -->
+        <form class="row justify-content-center login__form" onsubmit="irAlIndex(event)">
           <div class="col-10 my-3">
-            <input class="form-control" placeholder="Correo electrónico" required autofocus type="email">
+            <input class="form-control" placeholder="Correo electrónico" required type="email">
           </div>
           <div class="col-10 my-3">
             <input class="form-control" placeholder="Contraseña" required type="password">
@@ -31,12 +30,21 @@
           </div>
           <div class="col-10 my-2">
             <span>¿No tienes una cuenta?
-              <a class="font-weight-bold text-decoration-none" href="#">Regístrate</a>
+              <a class="font-weight-bold text-decoration-none" href="registro.html">Regístrate</a>
             </span>
           </div>
         </form>
       </div>
     </div>
   </div>
+
+  <script>
+    // Evita validación real y redirige al index
+    function irAlIndex(event) {
+      event.preventDefault(); // Evita enviar el formulario
+      window.location.href = "home.html"; // Redirige al index
+    }
+  </script>
 </body>
 </html>
+
