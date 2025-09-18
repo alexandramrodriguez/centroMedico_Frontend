@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Lista - Historiales</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container mt-5">
+		<h1>Lista - Historiales</h1>
+
+		<a class="btn btn-primary mb-3" th:href="@{/historiales/formulario}">Nuevo Historial</a>
+	
+	    <table class="table table-bordered">
+			<thead class="table-dark">
+		        <tr>
+		            <th>ID</th>
+		            <th>Paciente</th>
+		            <th>Medico</th>
+		            <th>Fecha</th>
+		            <th>Diagnóstico</th>
+		            <th>Tratamiento</th>
+		            <th>Acciones</th>
+		        </tr>
+			</thead>
+			<tbody>
+		        <tr th:each="historial : ${historiales}">
+		            <td th:text="${historial.id}"></td>
+		            <td th:text="${historial.pacienteH.usuario.nombre + ' ' + historial.pacienteH.usuario.apellido}"></td>
+		            <td th:text="${historial.medicoH.usuario.nombre + ' ' + historial.medicoH.usuario.apellido}"></td>
+		            <td th:text="${historial.fecha}"></td>
+		            <td th:text="${historial.diagnostico}"></td>
+		            <td th:text="${historial.tratamineto}"></td>
+		            	
+		            <td>
+		                <a class="btn btn-warning btn-sm" th:href="@{/historiales/editar/{id}(id=${historial.id})}">Editar</a>
+		                    |
+		                <a class="btn btn-danger btn-sm" th:href="@{/historiales/eliminar/{id}(id=${historial.id})}" 
+		                onclick="return confirm('¿Estás seguro de eliminar este historial?')">Eliminar</a>
+		            </td>
+		        </tr>
+	        </tbody>
+	    </table>
+	</div>
+
+            <footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

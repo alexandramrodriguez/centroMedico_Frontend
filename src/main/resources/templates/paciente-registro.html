@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:insert="~{layout/layout :: head}"></th:block>
+	<title>REGISTRO DE PACIENTES</title>
+</head>
+<body class="body">
+	<div class="container-fluid w-75 mt-5">
+		<div class="row align-items-stretch bg-light bg-gradient rounded login">
+			<section class="col col-md-5 col-lg-6 d-none d-md-block rounded-start login__banner"></section>
+			<div class="col col-lg-6 py-4">
+				<h2 class="fw-bold text-center mb-4">Ingrese sus datos</h2>
+				<form class="row justify-content-center login__form" method="post" th:action="@{/pacientes/registro}" th:object="${usuario}">
+					<div class="col-10" th:if=${param.exito}>
+						<div class="alert alert-success py-1 mb-0 text-center">¡Se registro correctamente!</div>
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" placeholder="Nombres" required autofocus th:field="*{nombre}"
+							type="text">
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" placeholder="Apellidos" required th:field="*{apellido}"
+							type="text">
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" required th:field="*{fechaNacimiento}" type="date">
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" placeholder="Sexo" required th:field="*{sexo}"
+							type="text">
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" placeholder="DNI" required th:field="*{dni}"
+							type="text">
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" placeholder="Correo electrónico" required th:field="*{correo}"
+							type="email">
+					</div>
+					<div class="col-10 my-2">
+						<input class="form-control" placeholder="Contraseña" required th:field="*{clave}" type="password">
+					</div>
+					<div class="row col-10 my-2">
+						<button type="submit" class="btn btn-block btn-primary">Registrar</button>
+					</div>
+					<div class="col-10 my-2">
+						<span>¿Ya tienes una cuenta?<a class="font-weight-bold text-decoration-none" th:href="@{/login}"> Inicia sesión</a></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

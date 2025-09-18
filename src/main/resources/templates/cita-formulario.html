@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Formulario de Cita</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+    <div class="container my-5">
+        <h2>Formulario de Cita</h2>
+
+        <!-- Enlace para volver al listado de citas -->
+        <a class="btn btn-secondary mb-3" th:href="@{/citas/listar}">Volver al Listado de Citas</a>
+
+        <!-- Formulario para agregar una nueva cita -->
+        <form th:action="@{/citas/guardar}" th:object="${cita}" method="post">
+            <input type="hidden" th:field="*{cita_id}"/>
+
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" class="form-control" th:field="*{cita_fecha}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="motivo">Motivo:</label>
+                <input type="text" id="motivo" class="form-control" th:field="*{cita_motivo}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="paciente">Paciente:</label>
+                <input type="text" id="paciente" class="form-control" th:field="*{paciente.id}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="medico">Médico:</label>
+                <input type="text" id="medico" class="form-control" th:field="*{medico.id}" required/>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Guardar Cita</button>
+        </form>
+    </div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Formulario - Historial</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container my-5">
+		<h2>Formulario - Historial</h2>
+		
+		<a class="btn btn-secondary mb-3" th:href="@{/historiales/listar}">Volver al listado</a>
+    
+	    <form th:action="@{/historiales/guardar}" th:object="${historial}" method="post">
+			
+			<input type="hidden" th:field="*{id}"/>
+				
+			<div class="form-group">
+				<label for="pacienteH">Paciente:</label>
+	        	<input type="text" id="pacienteH" class="form-control" th:field="*{pacienteH.id}" required/>
+			</div>
+	
+			<div class="form-group">
+				<label for="medicoH">Médico:</label>
+	        	<input type="text" id="medicoH" class="form-control" th:field="*{medicoH.id}" required/>
+			</div>
+	        
+	        <div class="form-group">
+				<label for="fecha">Fecha:</label>
+	        	<input type="date" id="fecha" class="form-control" th:field="*{fecha}" required/>
+			</div>
+	
+			<div class="form-group">
+				<label for="diagnostico">Diagnostico:</label>
+	        	<input type="text" id="diagnostico" class="form-control" th:field="*{diagnostico}" required/>
+			</div>
+	        
+	        <div class="form-group">
+				<label for="tratamineto">Tratamiento:</label>
+	        	<input type="text" id="tratamineto" class="form-control" th:field="*{tratamineto}" required/>
+			</div>
+	
+	        <button type="submit" class="btn btn-primary">Guardar</button>
+	    </form>
+	</div>
+	            <footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

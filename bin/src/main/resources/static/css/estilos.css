@@ -1,0 +1,18 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+	background: #93C6E7;
+	background: linear-gradient(to right, #2B3467, #BAD7E9);
+}
+
+.login {}
+
+.login__banner {
+	background-image: url("../img/login-banner.jpg");
+	background-position: center center;
+	background-size: cover;
+}

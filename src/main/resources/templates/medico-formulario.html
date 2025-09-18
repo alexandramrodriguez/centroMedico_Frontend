@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Formulario de Médico</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+    <div class="container my-1">
+        <h2>Formulario de Médico</h2>
+
+        <!-- Enlace para volver al listado de médicos -->
+        <a class="btn btn-secondary mb-3" th:href="@{/medicos/listar}">Volver al Listado de Médicos</a>
+
+        <!-- Formulario para agregar un nuevo médico -->
+        <form th:action="@{/medicos/agregar}" th:object="${medico}" method="post">
+            <!-- Campos del formulario -->
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label for="especialidad">Especialidad:</label>
+                <input type="text" id="especialidad" class="form-control" th:field="*{especialidad}" required/>
+            </div>
+
+            <!-- Assuming 'usuario' is a field in Medico class -->
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" class="form-control" th:field="*{usuario.nombre}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" class="form-control" th:field="*{usuario.apellido}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" class="form-control" th:field="*{usuario.fechaNacimiento}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" class="form-control" th:field="*{usuario.sexo}" required>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" class="form-control" th:field="*{usuario.dni}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" class="form-control" th:field="*{usuario.correo}" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="clave">Clave:</label>
+                <input type="password" id="clave" class="form-control" th:field="*{usuario.clave}" required/>
+            </div>
+
+            <!-- Assuming 'role' is a field in Usuario class -->
+            <div class="form-group">
+                <label for="role">Rol:</label>
+                <input type="text" id="role" class="form-control" th:field="*{usuario.role}" required/>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Guardar Médico</button>
+        </form>
+    </div>
+    <footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

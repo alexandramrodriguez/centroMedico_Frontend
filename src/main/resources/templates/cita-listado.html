@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Listado de Citas</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+    <div class="container my-5">
+        <h2>Listado de Citas</h2>
+
+        <!-- Enlace para ir al formulario de citas -->
+        <a class="btn btn-primary mb-3" th:href="@{/citas/formulario}">Agregar Nueva Cita</a>
+
+        <!-- Utilizar clases de Bootstrap para dar estilo a la tabla -->
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
+                    <th>Paciente</th>
+                    <th>Médico</th>
+                    <th>Acciones</th> <!-- Nueva columna para acciones -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre la lista de citas -->
+                <tr th:each="cita : ${citas}">
+                    <td th:text="${cita.cita_id}"></td>
+                    <td th:text="${cita.cita_fecha}"></td>
+                    <td th:text="${cita.cita_motivo}"></td>
+                    <td th:text="${cita.paciente.usuario.nombre + ' ' + cita.paciente.usuario.apellido}"></td>
+                    <td th:text="${cita.medico.usuario.nombre + ' ' + cita.medico.usuario.apellido}"></td>
+                    
+                    <td>
+                        <a class="btn btn-warning btn-sm" th:href="@{/citas/editar/{id}(id=${cita.cita_id})}">Editar</a>
+                        <a class="btn btn-danger btn-sm" th:href="@{/citas/eliminar/{id}(id=${cita.cita_id})}"
+                           onclick="return confirm('¿Estás seguro de eliminar esta cita?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

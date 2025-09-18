@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Listado de Pacientes</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+    <div class="container my-5">
+        <h2>Listado de Pacientes</h2>
+
+        <!-- Enlace para ir al formulario de pacientes -->
+        <a class="btn btn-primary mb-3" th:href="@{/pacientes/formulario}">Agregar Nuevo Paciente</a>
+
+        <!-- Utilizar clases de Bootstrap para dar estilo a la tabla -->
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Sexo</th>
+                    <th>DNI</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre la lista de pacientes -->
+                <tr th:each="paciente : ${pacientes}">
+                    <td th:text="${paciente.id}"></td>
+                    <td th:text="${paciente.usuario.nombre}"></td>
+                    <td th:text="${paciente.usuario.apellido}"></td>
+                    <td th:text="${paciente.usuario.fechaNacimiento}"></td>
+                    <td th:text="${paciente.usuario.sexo}"></td>
+                    <td th:text="${paciente.usuario.dni}"></td>
+                    <td th:text="${paciente.usuario.correo}"></td>
+                    <td>
+                        <!-- Enlace para editar -->
+                        <a class="btn btn-warning btn-sm" th:href="@{/pacientes/editar/{id}(id=${paciente.id})}">Editar</a>
+                        <!-- Enlace para eliminar con un botón de confirmación -->
+                        <a class="btn btn-danger btn-sm" th:href="@{/pacientes/eliminar/{id}(id=${paciente.id})}"
+                           onclick="return confirm('¿Estás seguro de eliminar este paciente?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de medicos</title>
+</head>
+<body>
+    <h1>Listado de medicos</h1>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Especialidad</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Sexo</th>
+            <th>DNI</th>
+            <th>Correo</th>
+        </tr>
+
+        <tr th:each="medico : ${medicos}">
+            <td th:text="${medico.id}"></td>
+            <td th:text="${medico.usuario.nombre}"></td>
+            <td th:text="${medico.usuario.apellido}"></td>
+            <td th:text="${medico.especialidad}"></td>
+            <td th:text="${medico.usuario.fechaNacimiento}"></td>
+            <td th:text="${medico.usuario.sexo}"></td>
+            <td th:text="${medico.usuario.dni}"></td>
+            <td th:text="${medico.usuario.correo}"></td>
+        </tr>
+    </table>
+</body>
+</html>

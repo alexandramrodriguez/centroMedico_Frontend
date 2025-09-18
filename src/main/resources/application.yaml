@@ -1,0 +1,10 @@
+spring:
+  config:
+    import:
+    - api-properties.yaml
+    
+server:
+  port:
+    8080
+    
+    

@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<th:block th:insert="~{layout/layout :: head}"></th:block>
+    <title>Listado de médicos</title>
+</head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container my-5">
+		<h2>Listado de Médicos</h2>
+		<a class="btn btn-primary mb-3" th:href="@{/medicos/formulario}">Agregar Nuevo Médico</a>
+		<table class="table table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>ID</th>
+					<th>Nombres</th>
+					<th>Apellidos</th>
+					<th>Especialidad</th>
+					<th>Fecha de Nacimiento</th>
+					<th>Sexo</th>
+					<th>DNI</th>
+					<th>Correo</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="medico : ${medicos}">
+					<td th:text="${medico.id}"></td>
+					<td th:text="${medico.usuario.nombre}"></td>
+					<td th:text="${medico.usuario.apellido}"></td>
+					<td th:text="${medico.especialidad}"></td>
+					<td th:text="${medico.usuario.fechaNacimiento}"></td>
+					<td th:text="${medico.usuario.sexo}"></td>
+					<td th:text="${medico.usuario.dni}"></td>
+					<td th:text="${medico.usuario.correo}"></td>
+					
+					 <td>
+                        <!-- Enlace para editar -->
+                        <a class="btn btn-warning btn-sm" th:href="@{/medicos/editar/{id}(id=${medico.id})}">Editar</a>
+                        <!-- Enlace para eliminar con un botón de confirmación -->
+                        <a class="btn btn-danger btn-sm" th:href="@{/medicos/eliminar/{id}(id=${medico.id})}"
+                           onclick="return confirm('¿Estás seguro de eliminar este médico?')">Eliminar</a>
+                    </td>
+				</tr>
+			</tbody>
+			
+		</table>
+	</div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>
